@@ -4,7 +4,7 @@
   "description": "Gondor API Client",
   "homepage": "http://eldarion.cloud",
   "author": "Brian Rosner <brosner@eldarion.com>",
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "license": "BSD",
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -21,7 +21,7 @@
     "node": ">=8.0.0"
   },
   "scripts": {
-    "build": "babel lib --presets=babel-preset-es2015 --out-dir=dist",
-    "prepublish": "yarn run build"
+    "build": "babel -s inline -d lib src",
+    "prepublish": "npm run build"
   }
 }
