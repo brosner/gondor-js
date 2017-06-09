@@ -4,9 +4,11 @@
   "description": "Gondor API Client",
   "homepage": "http://eldarion.cloud",
   "author": "Brian Rosner <brosner@eldarion.com>",
-  "main": "lib",
+  "main": "./dist/index.js",
   "license": "BSD",
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.3.0"
@@ -17,5 +19,9 @@
   },
   "engine": {
     "node": ">=8.0.0"
+  },
+  "scripts":{
+    "build": "babel lib --presets=babel-preset-es2015 --out-dir=dist",
+    "prepublish": "yarn run build"
   }
 }
