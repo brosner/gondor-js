@@ -22,6 +22,6 @@
   },
   "scripts": {
     "build": "babel -s inline -d lib src",
-    "prepublish": "yarn run build"
+    "prepublish": "npm run build"
   }
 }
