@@ -17,11 +17,10 @@ class Client {
   resourceGroups({ accessToken }) {
     const client = this;
     return {
-      async list() {
-        const res = await fetch(`${client.apiUrl}resource_groups/`, {
+      list() {
+        return fetch(`${client.apiUrl}resource_groups/`, {
           headers: Object.assign({}, authHeaders(accessToken)),
-        });
-        return res.json();
+        }).then(res => res.json());
       },
     };
   }
@@ -29,14 +28,13 @@ class Client {
   sites({ accessToken, resourceGroup }) {
     const client = this;
     return {
-      async list() {
-        const res = await fetch(
+      list() {
+        return fetch(
           withQuery(`${client.apiUrl}sites/`, { resource_group: resourceGroup }),
           {
             headers: Object.assign({}, authHeaders(accessToken)),
           },
-        );
-        return res.json();
+        ).then(res => res.json());
       },
     };
   }
@@ -44,14 +42,13 @@ class Client {
   instances({ accessToken, site }) {
     const client = this;
     return {
-      async list() {
-        const res = await fetch(
+      list() {
+        return fetch(
           withQuery(`${client.apiUrl}instances/`, { site }),
           {
             headers: Object.assign({}, authHeaders(accessToken)),
           },
-        );
-        return res.json();
+        ).then(res => res.json());
       },
     };
   }
@@ -59,14 +56,13 @@ class Client {
   services({ accessToken, instance }) {
     const client = this;
     return {
-      async list() {
-        const res = await fetch(
+      list() {
+        return fetch(
           withQuery(`${client.apiUrl}services/`, { instance }),
           {
             headers: Object.assign({}, authHeaders(accessToken)),
           },
-        );
-        return res.json();
+        ).then(res => res.json());
       },
     };
   }
